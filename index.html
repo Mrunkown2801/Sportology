@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPORTOLOGY | Master Every Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a class="logo" href="#">SPORTOLOGY<span>®</span></a>
+  <nav>
+    <a href="#sports">SPORTS</a>
+    <a href="#about">ABOUT</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">THE ULTIMATE SPORTS PLAYBOOK</p>
+  <h1>KNOW THE GAME.<br><span>OWN THE GAME.</span></h1>
+  <p>Understand the Game. Master the Skills.</p>
+  <a href="#sports" class="main-btn">EXPLORE SPORTS ↗</a>
+  <div class="hero-stamp">EST.<br>2026</div>
+</section>
+
+<section class="sports-section" id="sports">
+  <div class="section-heading">
+    <p class="eyebrow">FIND YOUR GAME</p>
+    <h2>EXPLORE SPORTS<span>_</span></h2>
+    <p>12 sports. Endless things to learn.</p>
+  </div>
+
+  <input id="search" type="search"
+    placeholder="Search your sport...">
+
+  <div id="sports-grid" class="sports-grid"></div>
+</section>
+
+<section class="about" id="about">
+  <p class="eyebrow">MORE THAN JUST A GAME</p>
+  <h2>LEARN IT. PLAY IT. MASTER IT.</h2>
+  <p>From basic rules to advanced tactics, SPORTOLOGY
+  helps you understand the world of sports.</p>
+</section>
+
+<footer>
+  <h2>SPORTOLOGY®</h2>
+  <p>UNDERSTAND THE GAME. MASTER THE SKILLS.</p>
+  <p>© 2026 SPORTOLOGY. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<div id="sport-modal" class="modal hidden">
+  <div class="modal-content">
+    <button id="close-modal" class="close-btn">✕</button>
+    <p class="eyebrow">YOUR SPORTS GUIDE</p>
+    <h2 id="sport-title"></h2>
+    <div id="sport-content"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

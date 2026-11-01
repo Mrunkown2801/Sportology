@@ -1,0 +1,116 @@
+
+const sports = [
+  {name:"Football", icon:"⚽", type:"Team sport"},
+  {name:"Basketball", icon:"🏀", type:"Team sport"},
+  {name:"Cricket", icon:"🏏", type:"Team sport"},
+  {name:"Volleyball", icon:"🏐", type:"Team sport"},
+  {name:"Tennis", icon:"🎾", type:"Racket sport"},
+  {name:"Badminton", icon:"🏸", type:"Racket sport"},
+  {name:"Hockey", icon:"🏑", type:"Team sport"},
+  {name:"Athletics", icon:"🏃", type:"Track and field"},
+  {name:"Swimming", icon:"🏊", type:"Water sport"},
+  {name:"Chess", icon:"♟️", type:"Mind sport"},
+  {name:"Baseball", icon:"⚾", type:"Team sport"},
+  {name:"Rugby", icon:"🏉", type:"Team sport"}
+];
+
+const grid = document.getElementById("sports-grid");
+const search = document.getElementById("search");
+const modal = document.getElementById("sport-modal");
+
+function showSports(list) {
+  grid.innerHTML = "";
+
+  if (list.length === 0) {
+    grid.innerHTML = "<p>No sports found. Try another name.</p>";
+    return;
+  }
+
+  list.forEach(sport => {
+    const card = document.createElement("button");
+    card.className = "sport-card";
+
+    const icon = document.createElement("div");
+    icon.className = "sport-icon";
+    icon.textContent = sport.icon;
+
+    const title = document.createElement("h3");
+    title.textContent = sport.name;
+
+    const type = document.createElement("p");
+    type.textContent = sport.type;
+
+    card.append(icon, title, type);
+    card.addEventListener("click", () => openSport(sport));
+    grid.appendChild(card);
+  });
+}
+
+function openSport(sport) {
+  document.getElementById("sport-title").textContent =
+    sport.icon + " " + sport.name;
+
+  const sections = [
+    ["Introduction", "Discover the history, objective and basic format of " + sport.name + "."],
+    ["Rules and regulations", "Learn how the game is played, how points are scored, and what actions are permitted."],
+    ["Equipment", "Explore the equipment, clothing and playing surfaces used in " + sport.name + "."],
+    ["Skills and techniques", "Learn the fundamental techniques and practise them step by step."],
+    ["Positions and roles", "Understand the different positions and responsibilities of players."],
+    ["Tactics and strategies", "Explore attacking, defending and decision-making strategies."],
+    ["Training drills", "Develop your skills through structured beginner and advanced practice."],
+    ["History and legends", "Discover the important moments, competitions and famous athletes in the sport."]
+  ];
+
+  const content = document.getElementById("sport-content");
+  content.replaceChildren();
+
+  sections.forEach(([heading, description]) => {
+    const item = document.createElement("div");
+    item.className = "guide-item";
+
+    const title = document.createElement("h3");
+    title.textContent = heading;
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = description;
+
+    item.append(title, paragraph);
+    content.appendChild(item);
+  });
+
+  const quiz = document.createElement("div");
+  quiz.className = "guide-item";
+
+  const quizTitle = document.createElement("h3");
+  quizTitle.textContent = "Test your knowledge";
+
+  const quizText = document.createElement("p");
+  quizText.textContent = "Ready to test what you've learned? Our sport-specific quizzes are coming soon!";
+
+  quiz.append(quizTitle, quizText);
+  content.appendChild(quiz);
+
+  modal.classList.remove("hidden");
+}
+
+search.addEventListener("input", () => {
+  const query = search.value.toLowerCase();
+
+  const filtered = sports.filter(sport =>
+    sport.name.toLowerCase().includes(query)
+  );
+
+  showSports(filtered);
+});
+
+document.getElementById("close-modal").addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+
+showSports(sports);
